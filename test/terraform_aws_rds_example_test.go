@@ -19,7 +19,6 @@ var password = "password"
 var awsRegion = "eu-west-1"
 
 func setup(t *testing.T) *terraform.Options {
-	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	//awsRegion := aws.GetRandomStableRegion(t, nil, nil)
 	instanceType := aws.GetRecommendedRdsInstanceType(t, awsRegion, "mysql", "5.7.21", []string{"db.t2.micro", "db.t3.micro"})
 
