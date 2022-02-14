@@ -68,7 +68,7 @@ func Test_TerraformAwsRdsExample(t *testing.T) {
 	allowSuspiciousUdfsParameterValue := aws.GetParameterValueForParameterOfRdsInstance(t, "allow-suspicious-udfs", dbInstanceID, awsRegion)
 	//retentionPeriod := aws.GetParameterValueForParameterOfRdsInstance(t, "backup_retention_period", dbInstanceID, awsRegion)
 
-	blip := GetBackupOfRdsInstance(t, dbInstanceID, awsRegion)
+	retentionPeriod := GetRetentionPeriod(t, dbInstanceID, awsRegion)
 
 	// Lookup option values. All defined values are strings in the API call response
 	mariadbAuditPluginServerAuditEventsOptionValue := aws.GetOptionSettingForOfRdsInstance(t, "MARIADB_AUDIT_PLUGIN", "SERVER_AUDIT_EVENTS", dbInstanceID, awsRegion)
@@ -86,5 +86,5 @@ func Test_TerraformAwsRdsExample(t *testing.T) {
 	// assert.Equal(t, "", mariadbAuditPluginServerAuditEventsOptionValue)
 	assert.Equal(t, "CONNECT", mariadbAuditPluginServerAuditEventsOptionValue)
 	// backup_retention_period
-	assert.Equal(t, 7, blip)
+	assert.Equal(t, 7, retentionPeriod)
 }

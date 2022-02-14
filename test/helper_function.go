@@ -5,8 +5,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/testing"
 )
 
-func GetBackupOfRdsInstance(t testing.TestingT, dbInstanceID string, awsRegion string) int {
-	backup, err := GetBackupOfRdsInstanceE(t, dbInstanceID, awsRegion)
+func GetRetentionPeriod(t testing.TestingT, dbInstanceID string, awsRegion string) int {
+	backup, err := GetRetentionPeriodE(t, dbInstanceID, awsRegion)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -14,7 +14,7 @@ func GetBackupOfRdsInstance(t testing.TestingT, dbInstanceID string, awsRegion s
 	return int(backup)
 }
 
-func GetBackupOfRdsInstanceE(t testing.TestingT, dbInstanceID string, awsRegion string) (int64, error) {
+func GetRetentionPeriodE(t testing.TestingT, dbInstanceID string, awsRegion string) (int64, error) {
 	dbInstance, err := aws.GetRdsInstanceDetailsE(t, dbInstanceID, awsRegion)
 	if err != nil {
 		return -1, err
